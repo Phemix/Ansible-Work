@@ -1,0 +1,41 @@
+---
+- name: Install HTTP server for Femi (Multi-Pacakage)
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Femi - Install HTTPD on Amazon Linux
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution == "Amazon"
+
+    - name: Femi - Start HTTPD on Amazon Linux
+      service:
+        name: httpd
+        state: started
+      when: ansible_distribution == "Amazon"
+
+    - name: Femi - Enable HTTPD on Amazon Linux
+      service:
+        name: httpd
+        enabled: yes
+      when: ansible_distribution == "Amazon"
+
+    - name: Femi - Install Apache2 on Ubuntu
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Femi - Start Apache2 on Ubuntu
+      service:
+        name: apache2
+        state: started
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Femi - Enable Apache2 on Ubuntu
+      service:
+        name: apache2
+        enabled: yes
+      when: ansible_distribution == "Ubuntu"

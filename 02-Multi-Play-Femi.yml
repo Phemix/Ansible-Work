@@ -1,5 +1,25 @@
 ---
 - name: Create /opt/devops directory and info.txt file
+  hosts: n1
+  become: yes
+  tasks:
+    - name: Ensure /opt/devops directory exists
+      ansible.builtin.file:
+        path: /opt/devops/newdir
+        state: directory
+        mode: '0755'
+
+- name: Create /opt/devops directory and info.txt file
+  hosts: n2
+  become: yes
+  tasks:
+    - name: Ensure /opt/devops directory exists
+      ansible.builtin.file:
+        path: /opt/devops/newdir3
+        state: directory
+        mode: '0755'
+
+- name: Create /opt/devops directory and info.txt file
   hosts: aws
   become: yes
   tasks:

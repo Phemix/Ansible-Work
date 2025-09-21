@@ -1,0 +1,15 @@
+---
+- name: Deploy Web App for Femi
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name:  Git Installation
+      yum:
+        name: git
+        state: present
+
+    - name: Deploy Code for Femi
+      git:
+        repo: https://github.com/CeeyIT-Solutions/ecomm-3.git
+        dest: /var/www/html

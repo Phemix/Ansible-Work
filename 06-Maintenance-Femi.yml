@@ -1,0 +1,10 @@
+---
+- name: Under Maintenance Mode for Business
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name: Update maintenance page for Femi
+      copy:
+        src: maintenance-femi.html
+        dest: /var/www/html/index.html

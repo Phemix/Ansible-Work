@@ -1,0 +1,20 @@
+---
+- name: Install Femi HTTP server (Apache2)
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name: Install Apache2 server for Femi
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start Femi Apache2 server
+      service:
+        name: apache2
+        state: started
+
+    - name: Enable Femi Apache2 server
+      service:
+        name: apache2
+        enabled: yes

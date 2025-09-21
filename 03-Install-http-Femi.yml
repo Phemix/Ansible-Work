@@ -1,0 +1,20 @@
+---
+- name: Install HTTPD for Femi
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name: Install HTTPD 
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start HTTPD for Femi
+      service:
+        name: httpd
+        state: started
+
+    - name: Enable HTTPD on Femi Server
+      service:
+        name: httpd
+        enabled: yes

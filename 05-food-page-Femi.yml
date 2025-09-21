@@ -1,0 +1,15 @@
+---
+- name: Deploy Food Page for Femi
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name: Install Git for Later Deployment
+      yum:
+        name: git
+        state: present
+
+    - name: Deploy Food Code for Femi
+      git:
+        repo: https://github.com/CeeyIT-Solutions/food.git
+        dest: /var/www/html
