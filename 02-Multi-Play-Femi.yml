@@ -1,0 +1,19 @@
+---
+- name: Create /opt/devops directory and info.txt file
+  hosts: aws
+  become: yes
+  tasks:
+    - name: Ensure /opt/devops directory exists
+      ansible.builtin.file:
+        path: /opt/devops
+        state: directory
+        mode: '0755'
+
+    - name: Create info.txt with a message
+      ansible.builtin.copy:
+        dest: /opt/devops/info.txt
+        content: "Hello from Ansible!"
+        owner: root
+        group: root
+        mode: '0644'
+
