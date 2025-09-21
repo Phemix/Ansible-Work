@@ -1,0 +1,17 @@
+---
+- name: Static Page - Femi
+  hosts: g1
+  become: yes
+
+  tasks:
+    - name: Femi - Update static page
+      copy:
+        src: Maintenance.html
+        dest: /var/www/html/static.html
+
+    - name: Update dynamic page - Femi
+      template:
+        src: dynamic.j2
+        dest: /var/www/html/dynamic.html
+
+

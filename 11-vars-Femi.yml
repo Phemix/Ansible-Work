@@ -1,0 +1,12 @@
+---
+- name: Variables for Femi
+  hosts: g1
+  become: yes
+  vars:
+    myusername: Femi
+
+  tasks:
+    - name: Update dynamic page - Femi
+      template:
+        src: dynamic.j2
+        dest: /var/www/html/dynamic.html

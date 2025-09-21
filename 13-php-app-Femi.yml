@@ -1,0 +1,8 @@
+---
+- name: Deploy HTML Page for Femi
+  hosts: n2
+  become: yes
+
+  roles:
+    - apache
+    - php
